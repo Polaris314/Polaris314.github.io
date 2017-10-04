@@ -1,0 +1,9 @@
+ <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1" >Worker Name</span>
+                        <input type="text" name="main" class="form-control" aria-describedby="basic-addon1">
+                    </div>
+                    <br/>
+                    <h2> Tell me a joke </h2>
+                    <textarea rows="10" class="form-control" name="text" placeholder="Harhar..."></textarea>
+                    <div style="height:10px"></div>
+                    <input type="submit" class="form-control">
