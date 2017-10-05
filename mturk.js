@@ -52,6 +52,8 @@ $(document).ready(function () {
 
     let submit_url=gup("turkSubmitTo");
     if (submit_url!==""){
+      
+      console.log("submit url is ok");
 
       $(button_selector).click(function(){
   
