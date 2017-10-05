@@ -56,8 +56,8 @@ $(document).ready(function () {
     console.log(button_selector);
     console.log($(button_selector).html());
 
-    let submit_url=gup("turkSubmitTo");
-    console.log(sumbmit_url);
+    let submit_url = gup("turkSubmitTo");
+    console.log(submit_url);
     if (submit_url!==""){
       
       console.log("submit url is ok");
