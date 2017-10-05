@@ -24,6 +24,8 @@ var button_selector = "#mturk-submit-button";
 //  Turkify the captioning page.
 $(document).ready(function () {
 
+  console.log("mturk js");
+  console.log("version a");
   let aid = gup("assignmentId");
 
   console.log(`aid: ${aid}`);
