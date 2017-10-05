@@ -10,7 +10,7 @@
  **/
 
 // selector used by jquery to identify your form
-var form_selector = "#mturk_form";
+var form_selector = "#mturk-form";
 var button_selector = "#mturk-submit-button";
 
 // TODO: Remove, test
@@ -26,9 +26,13 @@ $(document).ready(function () {
 
   let aid = gup("assignmentId");
 
+  console.log(`aid: ${aid}`);
+
   if(aid === ""  || aid == "ASSIGNMENT_ID_NOT_AVAILABLE") {
     $('input,textarea,select,button,canvas').attr("DISABLED", "disabled");
   }
+
+
   // is assigntmentId is a URL parameter
   if(aid !=="" && $(form_selector).length>0) {
 
