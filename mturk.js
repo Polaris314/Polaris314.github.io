@@ -23,15 +23,17 @@ var button_selector = "#mturk-submit-button";
 
 //  Turkify the captioning page.
 $(document).ready(function () {
-  console.log("start31231");
-  // is assigntmentId is a URL parameter
-  if((aid = gup("assignmentId"))!="" && $(form_selector).length>0) {
-    aid = gup("assignmentId");
 
+  let aid = gup("assignmentId");
+
+  if(aid === ""  || aid == "ASSIGNMENT_ID_NOT_AVAILABLE") {
+    $('input,textarea,select,button,canvas').attr("DISABLED", "disabled");
+  }
+  // is assigntmentId is a URL parameter
+  if(aid !=="" && $(form_selector).length>0) {
+
+    
     // If the HIT hasn't been accepted yet, disabled the form fields.
-    if(aid == "ASSIGNMENT_ID_NOT_AVAILABLE") {
-      $('input,textarea,select,button,canvas').attr("DISABLED", "disabled");
-    }
 
     // Add a new hidden input element with name="assignmentId" that
     // with assignmentId as its value.
