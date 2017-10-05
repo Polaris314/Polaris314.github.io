@@ -15,7 +15,7 @@ var button_selector = "#mturk-submit-button";
 
 // TODO: Remove, test
 // var submit_url = "./";
-
+// var aid = "10";
 
 
 
@@ -25,59 +25,65 @@ var button_selector = "#mturk-submit-button";
 $(document).ready(function () {
 
   console.log("mturk js");
-  console.log("version a");
+  console.log("version b");
   let aid = gup("assignmentId");
 
   console.log(`aid: ${aid}`);
 
-  if(aid === ""  || aid == "ASSIGNMENT_ID_NOT_AVAILABLE") {
+  if(false && (aid === ""  || aid === "ASSIGNMENT_ID_NOT_AVAILABLE")) {
     $('input,textarea,select,button,canvas').attr("DISABLED", "disabled");
   }
 
 
   // is assigntmentId is a URL parameter
-  if(aid !=="" && $(form_selector).length>0) {
+  console.log(`hey boiiii ${$(form_selector).length}`);
+  console.log(aid);
+  if(aid !== "" && $(form_selector).length>0) {
 
     
     // If the HIT hasn't been accepted yet, disabled the form fields.
 
     // Add a new hidden input element with name="assignmentId" that
     // with assignmentId as its value.
-    // var aid_input = $("<input type='hidden' name='assignmentId' value='" + aid + "'>").appendTo($(form_selector));
+
+    console.log("erhashda");
+    var aid_input = $("<input type='hidden' name='assignmentId' value='" + aid + "'>").appendTo($(form_selector));
 
     // Make sure the submit form's method is POST
-    // $(form_selector).attr('method', 'POST');
+    $(form_selector).attr('method', 'POST');
 
+
+    let submit_url = gup("turkSubmitTo");
     // Set the Action of the form to the provided "turkSubmitTo" field
-    // if((submit_url=gup("turkSubmitTo"))!="") {
-    //   $(form_selector).attr('action', submit_url + '/mturk/externalSubmit');
-    // }
+    if (submit_url !== "") {
+      $(form_selector).attr('action', submit_url + '/mturk/externalSubmit');
+    }
 
     console.log(button_selector);
     console.log($(button_selector).html());
 
-    let submit_url = gup("turkSubmitTo");
+    // submit_url = gup("turkSubmitTo");
     console.log(submit_url);
+  
+
     if (submit_url!==""){
       
       console.log("submit url is ok");
 
-      $(button_selector).click(function(){
+      $(form_selector).submit(function(){
   
         // if ((submit_url=gup("turkSubmitTo")) === "") return;
   
         var data = {};
-  
+        console.log("submitting")
         data.vertexList = vertexList;
         data.vertexCount = vertexCount;
-        data.assignmentId = aid;
   
-        
-        
-        console.log("posting");
-        $.post(submit_url,data, function(d){
-          $("html").html(d);
-        });
+        $("<input />").attr('type','hidden')
+            .attr('name', "extraData")
+            .attr('value', JSON.stringify(data))
+            .appendTo(this);      
+      
   
   
   
