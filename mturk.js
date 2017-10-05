@@ -51,7 +51,7 @@ $(document).ready(function () {
     console.log($(button_selector).html());
 
 
-    if ((submit_url)=gup("turkSubmitTo")!==""){
+    if (((submit_url)=gup("turkSubmitTo"))!==""){
 
       $(button_selector).click(function(){
   
