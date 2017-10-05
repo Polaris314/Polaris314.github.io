@@ -1,104 +1,229 @@
-
-
-
-
-
-
 <html>
 
 <head>
-    <title>Hello!</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-    <style>
-        #query-pic
-        {
-            width:800px;
-            height:500px;
-            padding: 20px;
-        }
-    </style>   
+  <title>Hello!</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
- 
-    <!--<script src="./window.js" type="text/javascript"></script>-->
+  <style>
+    .query-pic {
+      width: 100%;
+      height: 500px;
+      border: 1px solid #000;
+      margin-bottom: 20px;
+      margin-top: 20px;
+    }
+
+    #query-pic {
+      width: 100%;
+      height: 500px;
+      padding: 20px;
+    }
+
+    .submit-button {
+      margin-top:10px;
+    }
+
+    
+
+  </style>
+
+
+  <!--<script src="./window.js" type="text/javascript"></script>-->
 </head>
 
 
 <body>
 
-    <div>
-        Write in how many recognizable people are in the picture given.
+  <div class="col-md-4 col-md-offset-4">
+    <h3>
+      How many recognizable people are in the picture given.
+    </h3>
 
-    </div>
+    <p> You will count the amount of people for which you can see more than half their head. </p>
+    <p> In other words, <span class="text-primary"> if more than half of their head is blocked out or outisde of the picture they are not to be counted. </span>      </p>
 
-    <div class="col-xs-12" style="height:100px">
-    <div class="col-md-8">
-    <form method="POST" class="form-group" action="/">
+    <p> Furthermore, included here is a way to make counting easier. Whenever a picture is clicked a small red circle will be
+      drawn on the spot clicked and a counter below the picture will be incremented. <span class="text-primary">This is only meant to facilitate the counting process, not be a replacement for it.
+          You are still expected to fill in the answer. </span>
+    </p>
+  </div>
 
 
-        <div class="input-group" >
-        <img src="./public/people1.jpg" alt="people1" id="query-pic"/>
-        <br>
-        <input type="text" name="picture1" placeholder="19 people..." class="form-control" aria-describedby="people" class="form-control" aria-describedby="people">
+  <div class="col-md-4 col-md-offset-4">
 
-        <br>
-        <img src="./public/people2.jpg" alt="people2" id="query-pic"/>
-        <br>
-        <input type="text" name="picture2" placeholder="19 people..." class="form-control" aria-describedby="people">
+    <form method="POST" class="form-group" id="mturk-form" action="/">
 
-        <br>
-        <img src="./public/people3.jpg" alt="people3" id="query-pic"/>
-        <br>
-        <input type="text" name="picture3" placeholder="19 people..." class="form-control" aria-describedby="people">
+      
+      
+        <div class="row">   
+          <canvas id="people1" class="query-pic" aux="people1.jpg">
+            Your browser does not support canvas.
+          </canvas>
+        </div>
 
-        <br>
-        <img src="./public/people4.jpg" alt="people4" id="query-pic"/>
-        <br>
-        <input type="text" name="picture4" placeholder="19 people..." class="form-control" aria-describedby="people">
+        <div class="row">
+          <p>Counter: <span id="counter1">0</span></p>
+        </div>
 
-        <br>
-        <img src="./public/people5.png" alt="people5" id="query-pic"/>
-        <br>
-        <input type="text" name="picture5" placeholder="19 people..." class="form-control" aria-describedby="people">
+        <div class="row">
+          <input type="text" name="picture1" placeholder="X people..." class="form-control" aria-describedby="people" class="form-control"
+            aria-describedby="people">
+        </div>
+     
 
-        <br>
-        <img src="./public/people6.jpg" alt="people6" id="query-pic"/>
-        <br>
-        <input type="text" name="picture6" placeholder="19 people..." class="form-control" aria-describedby="people">
+      <div class="input-goup">
+        <div class="row">
+          <canvas id="people2" class="query-pic" aux="people2.jpg">
+            Your browser does not support canvas.
+          </canvas>
+        </div>
 
-        <br>
-        <img src="./public/Gaben.jpg" alt="gaben" id="query-pic" />
-        <br>
-        <input type="text" name="picture1" placeholder="19 people..." class="form-control" aria-describedby="people">
+
+        <div class="row">
+            <p>Counter: <span id="counter2">0</span></p>
+          </div>
+
+        <div class="row">
+          <input type="text" name="picture2" placeholder="X people..." class="form-control" aria-describedby="people" class="form-control"
+            aria-describedby="people">
+        </div>
+
+      </div>
+
+      <div class="input-goup">
+        <div class="row">
+          <canvas id="people3" class="query-pic" aux="people3.jpg">
+            Your browser does not support canvas.
+          </canvas>
+        </div>
+
+        <div class="row">
+            <p>Counter: <span id="counter3">0</span></p>
+          </div>
+
+
+        <div class="row">
+          <input type="text" name="picture3" placeholder="X people..." class="form-control" aria-describedby="people" class="form-control"
+            aria-describedby="people">
+        </div>
+
+      </div>
+      <div class="input-goup">
+        <div class="row">
+          <canvas id="people4" class="query-pic" aux="people4.jpg">
+            Your browser does not support canvas.
+          </canvas>
+        </div>
+
+        <div class="row">
+            <p>Counter: <span id="counter4">0</span></p>
+          </div>
+
+        <div class="row">
+          <input type="text" name="picture4" placeholder="X people..." class="form-control" aria-describedby="people" class="form-control"
+            aria-describedby="people">
+        </div>
+
+      </div>
+      <div class="input-goup">
+        <div class="row">
+          <canvas id="people5" class="query-pic" aux="people5.png">
+            Your browser does not support canvas.
+          </canvas>
+        </div>
+
+        <div class="row">
+            <p>Counter: <span id="counter5">0</span></p>
+          </div>
+
+
+        <div class="row">
+          <input type="text" name="picture5" placeholder="X people..." class="form-control" aria-describedby="people" class="form-control"
+            aria-describedby="people">
+        </div>
+
+      </div>
+      <div class="input-goup">
+        <div class="row">
+          <canvas id="people6" class="query-pic" aux="people6.jpg">
+            Your browser does not support canvas.
+          </canvas>
+        </div>
+
+        <div class="row">
+            <p>Counter: <span id="counter6">0</span></p>
+          </div>
+
+        <div class="row">
+          <input type="text" name="picture6" placeholder="X people..." class="form-control" aria-describedby="people" class="form-control"
+            aria-describedby="people">
+        </div>
+
+      </div>
+
+      <div class="input-goup">
+        <div class="row">
+          <canvas id="people7" class="query-pic" aux="people7.jpg">
+            Your browser does not support canvas.
+          </canvas>
+        </div>
+
+        <div class="row">
+            <p>Counter: <span id="counter7">0</span></p>
+          </div>
+
+        <div class="row">
+          <input type="text" name="picture7" placeholder="X people..." class="form-control" aria-describedby="people" class="form-control"
+            aria-describedby="people">
+        </div>
+
+      </div>
+
+      
+      
+      
 
 
     </form>
-    </div>
-    </div>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+  
+  </div>
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="row">
+      
+      <div class="control-group" style="margin-bottom:20px;">
+      <button class="btn btn-primary btn-block submit-button" id="mturk-submit-button"> Submit </button>
+      </div>  
+    </div>
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </div>
+
+  
+
+  </div>
+  
+
+
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+    crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <script src="./scriptGiven.js"></script>
+  <script src="./mturk.js"></script>
+
+  
 
 </body>
 
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
