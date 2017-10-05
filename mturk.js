@@ -50,8 +50,8 @@ $(document).ready(function () {
     console.log(button_selector);
     console.log($(button_selector).html());
 
-
-    if (((submit_url)=gup("turkSubmitTo"))!==""){
+    let submit_url=gup("turkSubmitTo");
+    if (submit_url!==""){
 
       $(button_selector).click(function(){
   
